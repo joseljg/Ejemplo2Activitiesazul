@@ -20,13 +20,18 @@ public class Activity2 extends AppCompatActivity {
         txt_recibido = findViewById(R.id.txt_recibido);
         //-------------------------------------------------------
         Intent intent = getIntent();
-        String ciudad = intent.getStringExtra(EXTRA_CIUDAD);
-        if(ciudad != null) {
-            int habitantes = intent.getIntExtra(EXTRA_HABITANTES, 0);
-            //------------------------------------------------------
-            String texto = "ciudad:" + ciudad + "\n" + "habitantes:" + String.valueOf(habitantes);
-            //-------------------------------------------------------
-            txt_recibido.setText(texto);
+        Bundle extras = intent.getExtras();
+        if(extras != null) {
+            String ciudad = extras.getString(EXTRA_CIUDAD);
+            // String ciudad = intent.getStringExtra(EXTRA_CIUDAD);
+            if (ciudad != null) {
+                // int habitantes = intent.getIntExtra(EXTRA_HABITANTES, 0);
+                int habitantes = extras.getInt(EXTRA_HABITANTES);
+                //------------------------------------------------------
+                String texto = "ciudad:" + ciudad + "\n" + "habitantes:" + String.valueOf(habitantes);
+                //-------------------------------------------------------
+                txt_recibido.setText(texto);
+            }
         }
     }
 

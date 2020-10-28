@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String EXTRA_CIUDAD = "ciudad";
-    public static final String EXTRA_HABITANTES = "habitantes";
+    public static final String EXTRA_CIUDAD = "es.joseljg.MainActivity.ciudad";
+    public static final String EXTRA_HABITANTES = "es.joseljg.MainActivity.habitantes";
     private EditText edt_ciudad = null;
     private EditText edt_habitantes = null;
 
@@ -34,8 +34,12 @@ public class MainActivity extends AppCompatActivity {
         int habitantes = 0;
         try {
             habitantes = Integer.valueOf(textoHabitantes);
-            intent.putExtra(EXTRA_CIUDAD, ciudad);
-            intent.putExtra(EXTRA_HABITANTES, habitantes);
+            Bundle extras = new Bundle();
+            extras.putString(EXTRA_CIUDAD, ciudad);
+            extras.putInt(EXTRA_HABITANTES, habitantes);
+            intent.putExtras(extras);
+           // intent.putExtra(EXTRA_CIUDAD, ciudad);
+          //  intent.putExtra(EXTRA_HABITANTES, habitantes);
             //-------------------------------------------------------------
             startActivity(intent);
         }
