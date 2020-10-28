@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import es.joseljg.ejemplo2activitiesazul.clases.Ciudad;
+
 import static es.joseljg.ejemplo2activitiesazul.MainActivity.*;
 
 public class Activity2 extends AppCompatActivity {
@@ -20,13 +22,16 @@ public class Activity2 extends AppCompatActivity {
         txt_recibido = findViewById(R.id.txt_recibido);
         //-------------------------------------------------------
         Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        if(extras != null) {
-            String ciudad = extras.getString(EXTRA_CIUDAD);
+        // Bundle extras = intent.getExtras();
+        Ciudad c = (Ciudad) intent.getSerializableExtra(EXTRA_OBJETO_CIUDAD);
+        if(c != null) {
+            String ciudad = c.getNombre();
+             // String ciudad = extras.getString(EXTRA_CIUDAD);
             // String ciudad = intent.getStringExtra(EXTRA_CIUDAD);
             if (ciudad != null) {
                 // int habitantes = intent.getIntExtra(EXTRA_HABITANTES, 0);
-                int habitantes = extras.getInt(EXTRA_HABITANTES);
+                // int habitantes = extras.getInt(EXTRA_HABITANTES);
+                int habitantes = c.getHabitantes();
                 //------------------------------------------------------
                 String texto = "ciudad:" + ciudad + "\n" + "habitantes:" + String.valueOf(habitantes);
                 //-------------------------------------------------------
